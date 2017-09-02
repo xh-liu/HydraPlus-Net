@@ -17,7 +17,6 @@ The contributions of this work:
 
 ## HydraPlus-Net
 
-We propose a multi-directional attention (MDA) module that aggregates multiple feature layers within the attentive regions extracted from multiple layers in the network. Since the attention maps are extracted from different semantic layers, they naturally abstract different levels of visual patterns of the same pedestrian image. Moreover, filtering multiple levels of features by the same attention map results in an effective fusion of multi-level features from a certain local attention distribution. After applying the MDA to different layers of the network, the multi-level attentive features are fused together to form the final feature representation.
 
 ### Multi-directional Attention
 
@@ -25,12 +24,7 @@ We propose a multi-directional attention (MDA) module that aggregates multiple f
 
 Multi-directional Attention module (MDA module) is a basic building block of the HydraPlus-Net. For each MDA module, there is one link of attention generation and three links for attentive feature construction. Different MDA modules have their attention maps generated from different inception blocks and then been multiplied to feature maps of different levels to produce multi-level attentive features. Applying one single attention map to multiple blocks naturally let the fused features encode multi-level information within the same spatial distribution.
 
-An attention map of a certain layer is generated from the feature maps by a 1x1 conv layer with BN and ReLU activation functioon afterwards. The attentive feature map is an element-wise multiplication of the attention map and feature maps, so that the network can attend to important local areas of an image by giving different weights to different spatial areas in feature maps. In an pedestrian image, usually there are more than one area that needs attention, like head, upper body, lower body, shoes and handcarries. So we need more multiple channels of attention maps. In this paper we fix the number of channels as 8. The attentive feature maps are passed through the following blocks of the network, and at the end of MDA module we concatenate the attnetive feature maps as the final feature representation.
 
-
-### Attentive Feature Network
-
-The Attentive Feature Network (AF-net) in comprises three branches of sub-networks augmented by the multi-directional attention (MDA) modules. It is well known that the attention maps learned from different blocks vary in scale and detailed structure. For example, the attention maps from higher blocks tend to be coarser but usually figure out the semantic regions like highlights the handbag. ut those from lower blocks often respond to local feature patterns and can catch detailed local information like edges and textures. Terefore, if fusing the multi-level attentive features by MDA modules, we enable the output features to gather information across different levels of semantics, thus offering more selective representations.
 
 ### Overall Architecture
 
@@ -62,7 +56,7 @@ To highlight the performance of the proposed method on extracting localized sema
 
 We release a new pedestrian attribute recognition dataset -- PA-100K dataset, which is larger and more informative than the previous datasets. It contains 100,000 pedestrian images annotated with 26 commonly used attributes including global attributes like gender, age, and object level attributes like handbag, phone, upper-clothing and etc. It surpasses the the previous datasets both in quantity and diversity.
 
-The PA-100K dataset was constructed by images captured from real outdoor surveillance cameras which is more challenging. The samples of one person was extracted along its tracklets in a surveillance video, and they are randomly assigned to one of these sets, in which case PA-$100$K dataset ensures the attributes are learned independent of the person's identity. So this partition based on tracklets is fairer than the partition that randomly shuffles the images in PETA dataset.
+The PA-100K dataset was constructed by images captured from real outdoor surveillance cameras which is more challenging. The samples of one person was extracted along its tracklets in a surveillance video, and they are randomly assigned to one of these sets, in which case PA-100K dataset ensures the attributes are learned independent of the person's identity. So this partition based on tracklets is fairer than the partition that randomly shuffles the images in PETA dataset.
 
 [Download the dataset here!](https://)
 
