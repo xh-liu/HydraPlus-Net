@@ -7,7 +7,7 @@ Pedestrian analysis is a long-lasting research topic because of the continuing d
 
 The figure below shows how multiple levels of feature patterns as well as a mixtrue of global and local information help with pedestrian analysis. For example, it is difficult to distinguish two instances if no semantic features are extracted around hair and shoulders, as shown in (a). Also in (c), the effective features should be located within a small-scale head-shoulder region if we want to detect the attribute calling. However, existing arts merely extract global features and are hardly effective to location-aware semantic pattern extraction. Furthermore, it is well-known that multi-level features aid diverse vision tasks. For example, the attribute clothing stride shown in (b) should be inferred from low-level features, while the attribute gender in (d) is judged by semantic understanding of the whole pedestrian image.
 
-![figure1](utils/images/fig1_v4.pdf)
+![figure1](fig/fig1_v4.jpg)
 
 The contributions of this work:
 * A HydraPlus Network (HP-net) is proposed with the novel multi-directional attention modules to train multi-level and multi-scale attention-strengthened features for fine-grained tasks of pedestrian analysis.
@@ -21,7 +21,7 @@ We propose a multi-directional attention (MDA) module that aggregates multiple f
 
 ### Multi-directional Attention
 
-![MDA](utils/images/fig_attention_module_v2_6.pdf)
+![MDA](fig/fig_attention_module_v2_6.jpg)
 
 Multi-directional Attention module (MDA module) is a basic building block of the HydraPlus-Net. For each MDA module, there is one link of attention generation and three links for attentive feature construction. Different MDA modules have their attention maps generated from different inception blocks and then been multiplied to feature maps of different levels to produce multi-level attentive features. Applying one single attention map to multiple blocks naturally let the fused features encode multi-level information within the same spatial distribution.
 
@@ -34,7 +34,7 @@ The Attentive Feature Network (AF-net) in comprises three branches of sub-networ
 
 ### Overall Architecture
 
-![Overall](utils/images/fig_framework_all_v8_beforecut.pdf)
+![Overall](fig/fig_framework_all_v8_beforecut.jpg)
 
 The HP-net consists of two parts, one is the **Main Net** (M-net) that is a plain CNN architecture, the other is the **Attentive Feature Net** (AF-net) including multiple branches of multi-directional attention (MDA) modules applied to different semantic feature levels.
 
@@ -48,13 +48,13 @@ The proposed framework is evaluated on two representatives among the pedestrian 
 
 ### Pedestrian Attribute Recognition
 
-![attribute_result](utils/images/fig_results_pa100k_v3.pdf)
+![attribute_result](fig/fig_results_pa100k_v3.jpg)
 
 We show attribute recognition results for several exemplar pedestrian images. The bars indicate the prediction probabilities. Although the probabilities of one attribute do not directly imply its actual recognition confidences, they uncover the discriminative power of different methods as the lower probability corresponds to ambiguity or difficulty in correctly predicting one attribute. The proposed HP-net reliably predicts these attributes with region-based saliency, like glasses, back-pack, hat, shorts and handcarry.
 
 ### Person Re-identification
 
-![reid_result](utils/images/fig_result_reid_v2.pdf)
+![reid_result](fig/fig_result_reid_v2.jpg)
 
 To highlight the performance of the proposed method on extracting localized semantic features, one query image together with its Top-5 gallery results by the proposed method and the M-net are visualized. For the probe images, the Top-5 retrieval results of HP-net together with attention maps are shown in the first row, and the results of M-net are shown in the second row. We observe that the proposed approach improves the rankings of the M-net and gets the correct results. By visualizing the attention maps from HP-Net of the query images and the Top-5 gallery images of both methods, we observe that the proposed attention modules can successfully locate the T-shirt patterns, in which the fine-grained features are extracted and discriminatingly identify the query person against the other identities with similar dressing.
 
