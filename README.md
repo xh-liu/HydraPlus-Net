@@ -5,7 +5,7 @@
 
 Pedestrian analysis is a long-lasting research topic because of the continuing demands for intelligent video surveillance and psychological social behavior researches. Particularly, with the explosion of researches about the deep convolutional neural networks in recent computer vision community, edestrian attribute recognition and person re-identification have received remarkable improvements and presented potentialities for practical usage in modern surveillance system. However, the learning of feature representation for pedestrian images, as the backbone for all those applications, still confronts critical challenges and needs profound studies. Previous approaches mainly generate global feature representations. We propose a multi-directional network, called HydraPlus-Net, to better exploit the global and local contents with multi-level feature fusion of a single pedestrian image. 
 
-The figure below shows how multiple levels of feature patterns as well as a mixtrue of global and local information help with pedestrian analysis. For example, it is difficult to distinguish two instances if no semantic features are extracted around hair and shoulders, as shown in (a). Also in (c), the effective features should be located within a small-scale head-shoulder region if we want to detect the attribute ``calling''. However, existing arts merely extract global features and are hardly effective to location-aware semantic pattern extraction. Furthermore, it is well-known that multi-level features aid diverse vision tasks. For example, the attribute ``clothing stride'' shown in (b) should be inferred from low-level features, while the attribute ``gender'' in (d) is judged by semantic understanding of the whole pedestrian image.
+The figure below shows how multiple levels of feature patterns as well as a mixtrue of global and local information help with pedestrian analysis. For example, it is difficult to distinguish two instances if no semantic features are extracted around hair and shoulders, as shown in (a). Also in (c), the effective features should be located within a small-scale head-shoulder region if we want to detect the attribute calling. However, existing arts merely extract global features and are hardly effective to location-aware semantic pattern extraction. Furthermore, it is well-known that multi-level features aid diverse vision tasks. For example, the attribute clothing stride shown in (b) should be inferred from low-level features, while the attribute gender in (d) is judged by semantic understanding of the whole pedestrian image.
 
 ![figure1](utils/images/fig1_v4.pdf)
 
@@ -50,7 +50,7 @@ The proposed framework is evaluated on two representatives among the pedestrian 
 
 ![attribute_result](utils/images/fig_results_pa100k_v3.pdf)
 
-We show attribute recognition results for several exemplar pedestrian images. The bars indicate the prediction probabilities. Although the probabilities of one attribute do not directly imply its actual recognition confidences, they uncover the discriminative power of different methods as the lower probability corresponds to ambiguity or difficulty in correctly predicting one attribute. The proposed HP-net reliably predicts these attributes with region-based saliency, like ``glasses'', ``back-pack'', ``hat'', ``shorts'' and ``handcarry''.
+We show attribute recognition results for several exemplar pedestrian images. The bars indicate the prediction probabilities. Although the probabilities of one attribute do not directly imply its actual recognition confidences, they uncover the discriminative power of different methods as the lower probability corresponds to ambiguity or difficulty in correctly predicting one attribute. The proposed HP-net reliably predicts these attributes with region-based saliency, like glasses, back-pack, hat, shorts and handcarry.
 
 ### Person Re-identification
 
@@ -62,7 +62,7 @@ To highlight the performance of the proposed method on extracting localized sema
 
 We release a new pedestrian attribute recognition dataset -- PA-100K dataset, which is larger and more informative than the previous datasets. It contains 100,000 pedestrian images annotated with 26 commonly used attributes including global attributes like gender, age, and object level attributes like handbag, phone, upper-clothing and etc. It surpasses the the previous datasets both in quantity and diversity.
 
-The PA-$100$K dataset was constructed by images captured from real outdoor surveillance cameras which is more challenging. The samples of one person was extracted along its tracklets in a surveillance video, and they are randomly assigned to one of these sets, in which case PA-$100$K dataset ensures the attributes are learned independent of the person's identity. So this partition based on tracklets is fairer than the partition that randomly shuffles the images in PETA dataset.
+The PA-100K dataset was constructed by images captured from real outdoor surveillance cameras which is more challenging. The samples of one person was extracted along its tracklets in a surveillance video, and they are randomly assigned to one of these sets, in which case PA-$100$K dataset ensures the attributes are learned independent of the person's identity. So this partition based on tracklets is fairer than the partition that randomly shuffles the images in PETA dataset.
 
 [Download the dataset here!](https://)
 
@@ -73,7 +73,7 @@ If you use our dataset or code, please cite the following paper:
 ```
 @inproceedings{liu2017hydraplus,
     Title = {HydraPlus-Net: Attentive Deep Features for Pedestrian Analysis},
-    author = {Liu, Xihui and Zhao, haiyu and Tian, Maoqing and Sheng, Lu and Shao, Jing and Yan, Junjie and Wang, Xiaogang},
+    author = {Liu, Xihui and Zhao, Haiyu and Tian, Maoqing and Sheng, Lu and Shao, Jing and Yan, Junjie and Wang, Xiaogang},
     Booktitle = {Proceedings of the IEEE international conference on computer vision},
     pages={1--9},
     year={2017}
