@@ -60,6 +60,12 @@ The PA-100K dataset was constructed by images captured from real outdoor surveil
 
 [Download the dataset here!](https://drive.google.com/drive/folders/0B5_Ra3JsEOyOUlhKM0VPZ1ZWR2M?usp=sharing)
 
+## Contact Information
+
+If you have any problems or questions, please feel free contact the authors.
+
+Xihui Liu, xihui.liu.me@gmail.com or xihui-liu@link.cuhk.edu.hk
+
 ## Reference and Acknowledgements
 
 If you use our dataset or code, please cite the following paper:
@@ -73,12 +79,3 @@ If you use our dataset or code, please cite the following paper:
     year={2017}
 }
 
-## Contact
-
-Xihui Liu, xihui.liu.me@gmail.com or xihui-liu@link
-
-## Contact
-
-If you have any problems or questions, please feel free contact the authors.
-
-Xihui Liu, xihui.liu.me@gmail.com or xihui-liu@link.cuhk.edu.hk
