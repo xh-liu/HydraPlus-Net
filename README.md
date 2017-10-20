@@ -72,3 +72,13 @@ If you use our dataset or code, please cite the following paper:
     pages={1--9},
     year={2017}
 }
+
+## Contact
+
+Xihui Liu, xihui.liu.me@gmail.com or xihui-liu@link
+
+## Contact
+
+If you have any problems or questions, please feel free contact the authors.
+
+Xihui Liu, xihui.liu.me@gmail.com or xihui-liu@link.cuhk.edu.hk
