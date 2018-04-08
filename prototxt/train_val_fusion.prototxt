@@ -1,0 +1,103 @@
+layer{
+  name: "features" 
+  type: "Python"
+  top: "features"
+  top: "labels"
+  python_param{
+    module: "pydata"
+    layer: "FeatureConcatDataLayer"
+    param_str: "{'featurenplist':['train_512_z0.npy','train_512_z1.npy','train_512_z3.npy','train_512_a0.npy','train_512_a1.npy','train_512_a3.npy','train_512_z0.npy','/mnt/lustre/liuxihui/attention_features/sense_27attr/train_512_z1.npy','train_512_z3.npy','train_512_main.npy'],'featurenplist_mi':['mirror_train_512_z0.npy','mirror_train_512_z1.npy','mirror_train_512_z3.npy','mirror_train_512_a0.npy','mirror_train_512_a1.npy','mirror_train_512_a3.npy','/mnt/lustre/liuxihui/attention_features/sense_27attr/mirror_train_512_z0.npy','mirror_train_512_z1.npy','mirror_train_512_z3.npy','mirror_train_512_main.npy'],\'labelnp\':\'train_label.npy\','shuffle':True,'batch_size':350,'mirror': True}"
+  }
+  include {
+    phase: TRAIN
+  }
+}
+layer{
+  name: "features" 
+  type: "Python"
+  top: "features"
+  top: "labels"
+  python_param{
+    module: "pydata"
+    layer: "FeatureConcatDataLayer"
+    param_str: "{'featurenplist': ['test_512_z0.npy','test_512_z1.npy','test_512_z3.npy','test_512_a0.npy','test_512_a1.npy', 'test_512_a3.npy','test_512_z0.npy','test_512_z1.npy','test_512_z3.npy','test_512_main.npy'], 'labelnp': 'test_label.npy','shuffle': False,'batch_size': 16,'mirror': False}"       
+  }
+  include {
+    phase: TEST
+  }
+}
+
+layer { 
+  name: "fusioin_feature" 
+  type: "InnerProduct" 
+  bottom: "features" 
+  top: "fusion_feature"
+  param {
+    lr_mult: 1 
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 512
+    weight_filler {
+      type: "xavier"
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+  name: "feature_for_classifier"
+  type: "BN"
+  bottom: "fusion_feature"
+  top: "feature_for_classifier"
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 1
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  param {
+    lr_mult: 0
+    decay_mult: 0
+  }
+  bn_param {
+    scale_filler {
+      type: "constant"
+      value: 1
+    }
+    shift_filler {
+      type: "constant"
+      value: 0
+    }
+    moving_average: true
+    decay: 0.05
+  }
+}
+layer { 
+  name: "fusion_feature_bn_relu" 
+  type: "ReLU" 
+  bottom: "feature_for_classifier" 
+  top: "feature_for_classifier" 
+}
+layer {
+  name: "fusioin_feature_bn_drop"
+  type: "Dropout"
+  bottom: "feature_for_classifier"
+  top: "feature_for_classifier"
+  dropout_param {
+    dropout_ratio: 0.5
+  }
+}
+############################# fc classifiers and loss ####################################
