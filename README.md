@@ -59,6 +59,7 @@ We release a new pedestrian attribute recognition dataset -- PA-100K dataset, wh
 The PA-100K dataset was constructed by images captured from real outdoor surveillance cameras which is more challenging. The samples of one person was extracted along its tracklets in a surveillance video, and they are randomly assigned to one of these sets, in which case PA-100K dataset ensures the attributes are learned independent of the person's identity. So this partition based on tracklets is fairer than the partition that randomly shuffles the images in PETA dataset.
 
 [Download the dataset here!](https://drive.google.com/drive/folders/0B5_Ra3JsEOyOUlhKM0VPZ1ZWR2M?usp=sharing)
+[Baiduyun download link](https://pan.baidu.com/s/1l-5a__OTwZVkhm_A16HraQ)
 
 ## Contact Information
 
